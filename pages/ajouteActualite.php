@@ -12,11 +12,11 @@
 		echo ('<input id="hidden" type="hidden" name="pseudo" value="'.$_SESSION['pseudo'].'">');
 		?>
 		<h3>Photo : </h3></br><input type="file" name="imageActu" id="imageActu">
-		<h3>Titre de votre actualité : </h3></br><input type="text" name="titreActu" id="titreActu">
-		<h3>Description de l'actualité : </h3></br><textarea name="descActu" rows="5" cols="30"></textarea>
-		</br><input type="submit" name="envoyer" class="bt" value="Ajouter l'actualité">
+		<h3>Titre de votre actualitÃ© : </h3></br><input type="text" name="titreActu" id="titreActu">
+		<h3>Description de l'actualitÃ© : </h3></br><textarea name="descActu" rows="5" cols="50"></textarea>
+		</br><input type="submit" name="envoyer" class="bt" value="Ajouter l'actualitÃ©">
 	</form>
 </center>
 <script>
-	document.getElementById("Actualités").style.color="#DCDCDC";
+	document.getElementById("ActualitÃ©s").style.color="#DCDCDC";
 </script>

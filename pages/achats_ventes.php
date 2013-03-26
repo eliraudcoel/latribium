@@ -6,15 +6,15 @@
 	
 	if(!isset($_SESSION['pseudo']))
 	{
-		echo('<script>alert(\'Vous ne vous êtes pas identifié! Vous ne pouvez pas accéder à cette partie du site... Inscrivez-vous!\');');
+		echo('<script>alert(\'Vous ne vous Ãªtes pas identifiÃ©! Vous ne pouvez pas accÃ©der Ã  cette partie du site... Inscrivez-vous!\');');
 		echo('setTimeout("document.location=\'./index.php?page=accueil.php\'", 500);</script>');
 	}
 	else
 	{
 		?>
 		<div id="ajouteAnnonce">
-			<a href="/PPEweb/public/index.php?page=ajouteAnnonce.php" class="btajout">Ajouter une annonce</a>
-			<?php echo('<a href="/PPEweb/public/index.php?page=suppAnnonce.php&pseudo='.$_SESSION['pseudo'].'" class="btsupp">Supprimer vos annonces</a>'); ?>
+			<a href="./index.php?page=ajouteAnnonce.php" class="btajout">Ajouter une annonce</a>
+			<?php echo('<a href="./index.php?page=suppAnnonce.php&pseudo='.$_SESSION['pseudo'].'" class="btsupp">Supprimer vos annonces</a>'); ?>
 		</div>
 		</br></br></br>
 		<center>
@@ -25,10 +25,10 @@
 				$i = 0;
 				$cote = "right";
 				$spage = $_GET["spage"];
-				$reqcount = $connexion -> query ("Select count(idVente) as count from articleVentes");
+				$reqcount = $connexion -> query ("Select count(idVente) as count from articleventes");
 				$lcount = $reqcount -> fetch();
 				$count= $lcount["count"];
-				$requete = $connexion-> query("SELECT * FROM articleVentes WHERE idVente>(".$count."-(".$spage."*5)) OR idVente<=(".$count."-((".$spage."-1)*5)) ORDER BY idVente DESC");
+				$requete = $connexion-> query("SELECT * FROM articleventes WHERE idVente>(".$count."-(".$spage."*5)) OR idVente<=(".$count."-((".$spage."-1)*5)) ORDER BY idVente DESC");
 				$sup = 0;
 				while ($row = $requete->fetch() and $sup <5)
 				{
@@ -55,9 +55,9 @@
 					echo '&nbsp;&nbsp;<h4>'.$row['descriptionVente'].'</h4>';
 					echo '</br>';
 					echo '<h4 align="'.$cote.'">Vendu par '.$row['auteurVente'].'</h4>';
-					echo '<h4 align="'.$cote.'">Prix : '.$row['prixVente'].'€</h4>';
+					echo '<h4 align="'.$cote.'">Prix : '.$row['prixVente'].'â‚¬</h4>';
 					echo'<div id="ajouteAnnonce">';
-					echo'<a href=/PPEweb/public/index.php?page=envoieDemandeAchat.php&pseudo='.$row['auteurVente'].'&idAnnonce='.$row['idVente'].' class="btajout">Je suis intéressé(e)!</a></div>';
+					echo'<a href=./index.php?page=envoieDemandeAchat.php&pseudo='.$row['auteurVente'].'&idAnnonce='.$row['idVente'].' class="btajout">Je suis intÃ©ressÃ©(e)!</a></div>';
 					echo '</div>';
 					echo '<br/><br/>';
 					$j=$j+1;

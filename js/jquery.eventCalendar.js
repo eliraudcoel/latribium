@@ -265,7 +265,7 @@ $.fn.eventCalendar = function(options){
 			if (day != '') {
 				subtitle.html(eventsOpts.txt_SpecificEvents_prev +"du "+ day + " " +eventsOpts.monthNames[month]+ " " + eventsOpts.txt_SpecificEvents_after);
 			} else {
-				if(eventsOpts.monthNames[month] == 'Avril' || eventsOpts.monthNames[month] == 'Août' || eventsOpts.monthNames[month] == 'Octobre')
+				if(eventsOpts.monthNames[month] == 'Avril' || eventsOpts.monthNames[month] == 'AoÃ»t' || eventsOpts.monthNames[month] == 'Octobre')
 				{
 					subtitle.html(eventsOpts.txt_SpecificEvents_prev +"d'"+ eventsOpts.monthNames[month] + " " + eventsOpts.txt_SpecificEvents_after);
 				}else{
@@ -403,17 +403,17 @@ $.fn.eventCalendar = function(options){
 $.fn.eventCalendar.defaults = {
     eventsjson: 'include/events.json.php',
 	eventsLimit: 4,
-	monthNames: [ "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-		"Juillet", "Août", "Septembre", "Octobre", "Novembre", "Decembre" ],
+	monthNames: [ "Janvier", "FÃ©vrier", "Mars", "Avril", "Mai", "Juin",
+		"Juillet", "AoÃ»t", "Septembre", "Octobre", "Novembre", "DÃ©cembre" ],
 	dayNames: [ 'Dimanche','Lundi','Mardi','Mercredi',
 		'Jeudi','Vendredi','Samedi' ],
 	dayNamesShort: [ 'Dim','Lun','Mar','Mer','Jeu','Ven','Sam' ],		
-	txt_noEvents: "Il n'y a pas d'évênements en cette période",
-	txt_SpecificEvents_prev: "Les évênements ",
+	txt_noEvents: "Il n'y a pas d'Ã©vÃªnements en cette pÃ©riode",
+	txt_SpecificEvents_prev: "Les Ã©vÃªnements ",
 	txt_SpecificEvents_after: ":",
 	txt_next: "suiv",
 	txt_prev: "prec",
-	txt_NextEvents: "Prochains évênements :",
+	txt_NextEvents: "Prochains Ã©vÃªnements :",
 	showDayAsWeeks: true,
 	startWeekOnMonday: true,
 	showDayNameInCalendar: true,

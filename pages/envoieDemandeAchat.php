@@ -21,24 +21,24 @@
 	$reqSql3 = $requete3->fetch(PDO::FETCH_OBJ); 
 	$titre = $reqSql3->titre;
 	
-	// Préparation du mail contenant le lien d'activation
+	// PrÃ©paration du mail contenant le lien d'activation
 	$destinataire = $emailEnvoie;
 	$sujet = "Activer votre compte" ;
-	$entete = "From: latribium@free.fr" ;
+	$entete = "From: admin@latribium.p.ht" ;
 
-	// Le lien d'activation est composé du login(log) et de la clé(cle)
-	$message = 'Votre annonce : "'.$titre.'" a intéressé '.$pseudoInte.'.
+	// Le lien d'activation est composÃ© du login(log) et de la clÃ©(cle)
+	$message = 'Votre annonce : "'.$titre.'" a intÃ©ressÃ© '.$pseudoInte.'.
 
-	Pour répondre à cette demande, vous pouvez le ou la contacter à cette adresse email : '.$emailInt.'
+	Pour rÃ©pondre Ã  cette demande, vous pouvez le ou la contacter Ã  cette adresse email : '.$emailInt.'
 
 	---------------
-	Ceci est un mail automatique, Merci de ne pas y répondre.';
+	Ceci est un mail automatique, Merci de ne pas y rÃ©pondre.';
 
 
 	mail($destinataire, $sujet, $message, $entete) ;
 ?>
 <script language='JavaScript'>
-	alert('Un email a été envoyé à la personne qui a créé cette vente, elle vous contactera par mail');
+	alert('Un email a Ã©tÃ© envoyÃ© Ã  la personne qui a crÃ©Ã© cette vente, elle vous contactera par mail');
 	setTimeout("document.location='./index.php?page=achats_ventes.php&spage=1'", 500);
 </script>
 <script>

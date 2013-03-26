@@ -5,22 +5,19 @@ body{
 }
 
 header{
-	width:92%;
+	width:100%;
 	height:auto;
-	margin:auto;
 }
 
 nav{
 	width:100%;
 	height:50px;
-	margin:auto;
 	padding-top : 10px;
 	background-color:#808080;
 }
 
 menu{
-	text-align: center;
-	display: inline; 
+	text-align: center;  
 }
 
 menu>a{
@@ -40,25 +37,30 @@ form{
 	float:right;
 }
 
-menu>input{
+.buttonCo{
 	width:30px;
 	height:30px;
+	vertical-align:middle;
 }
-menu>form>input{
-	width:30px;
-	height:30px;
+
+.table{
+	display: table;
 }
-menu>form{
-	width:30px;
-	height:30px;
+
+.centre{
+	margin : auto;
+}
+
+.table-cell{
+	display: table-cell;
 }
 
 #article{
-	width:89%;
+	width:100%;
 	height:auto;
-	margin-right:4%;
+	/* margin-right:4%;
 	margin-left:4%;
-	padding:20px;
+	padding:20px; */
 	background-color:#C0C0C0;
 	position:absolute;
 }
@@ -71,6 +73,7 @@ h1,h2,h3,h4,h6{
 #article>img{
 	width:96%;
 }
+
 #actu{
 	width:58%;
 	height:auto;
@@ -378,15 +381,6 @@ h1,h2,h3,h4,h6{
 	  background-position: 0 -15px;
 	  text-decoration: none;
 	}
-	
-#banniere
-{
-width: 600px;
-height: 150px;
-background-position:  center;
-margin-bottom: 20px; 
-background-image: url('images/banniere.jpg');
-}
  
 #corps_forum
 {
@@ -435,8 +429,14 @@ background-color : rgb(244,238,250);
 #quote
 {
 width: 100%;
+height: 150px;
 background-color : rgb(220,220,220);
 margin-top: 2px;
 margin-bottom: 2px;
 font-family: "Comic sans MS", Arial, Verdana, serif;
+}
+
+.avatar{
+	width:90%;
+	height: 30%;
 }

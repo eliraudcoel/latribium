@@ -24,7 +24,7 @@
 			$prix = (float) $prix;
 		}
 		
-		//Vérifications de sécurité
+		//VÃ©rifications de sÃ©curitÃ©
 		if(!in_array($extension,$extensions))
 		{
 			$erreur = 'Vous ne devez pas uploader un fichier de type php,doc...';
@@ -37,7 +37,7 @@
 		{
 			//On formate le nom du fichier
 			$fichier = strtr($fichier, 
-			'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+			'Ã€ÃÃ‚ÃƒÃ„Ã…Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃÃŽÃÃ’Ã“Ã”Ã•Ã–Ã™ÃšÃ›ÃœÃÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã²Ã³Ã´ÃµÃ¶Ã¹ÃºÃ»Ã¼Ã½Ã¿', 
 			'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 			$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 			
@@ -54,12 +54,12 @@
 			$stmt->bindParam(5, $taille);
 			$stmt->execute();
 			
-			$requete2 = $connexion -> query("SELECT max(LAST_INSERT_ID(idVente)) as nb FROM articleVentes");
+			$requete2 = $connexion -> query("SELECT max(LAST_INSERT_ID(idVente)) as nb FROM articleventes");
 			$reqSql2= $requete2->fetch(PDO::FETCH_OBJ); 
 			$idMax2 = $reqSql2->nb;
 			$idMax2 = $idMax2 + 1;
 			
-			$stmt2 = $connexion->prepare("insert into articleVentes (idVente, titreVente, descriptionVente, auteurVente, dateVente, prixVente, imageIdVente) values (?, ?, ?, ?, ?, ?, ?)");
+			$stmt2 = $connexion->prepare("insert into articleventes (idVente, titreVente, descriptionVente, auteurVente, dateVente, prixVente, imageIdVente) values (?, ?, ?, ?, ?, ?, ?)");
 			$stmt2->bindParam(1, $idMax2);
 			$stmt2->bindParam(2, $titre);
 			$stmt2->bindParam(3, $descr);
@@ -72,7 +72,7 @@
 
 			?>
 			<script language='JavaScript'> 
-				alert('votre annonce a été ajouté!');
+				alert('votre annonce a Ã©tÃ© ajoutÃ©!');
 				setTimeout("document.location='../index.php?page=achats_ventes.php&spage=1'", 500);
 			</script>
 			<?php
@@ -84,7 +84,7 @@
 			echo('</script>');
 		}
 	}else{ 
-		echo('<script language=\'JavaScript\'>alert(\'le fichier n\'a pas été transféré\');'); 
+		echo('<script language=\'JavaScript\'>alert(\'le fichier n\'a pas Ã©tÃ© transfÃ©rÃ©');'); 
 		echo('window.onload=function(){setTimeout(function(){history.back()},500);}');
 		echo('</script>');
 		}

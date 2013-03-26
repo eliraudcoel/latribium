@@ -24,7 +24,7 @@
 	} 
 	else 
 	{ 
-		$mess="Le fichier demandé n'existe pas."; 
+		$mess="Le fichier demandÃ© n'existe pas."; 
 		header("location:index.php?page=actualites.php?mess=".$mess); 
 	} 
 ?>

@@ -9,7 +9,7 @@
 			$req2 = $connexion -> exec("DELETE FROM articleventes WHERE idVente='".$valeur."'");
 			?>
 			<script language='JavaScript'> 
-				alert('Votre annonce a été supprimé!');
+				alert('Votre annonce a Ã©tÃ© supprimÃ©!');
 				setTimeout("document.location='../index.php?page=achats_ventes.php&spage=1'", 500);
 			</script>
 			<?php
@@ -17,7 +17,7 @@
 	}else{
 		?>
 			<script language='JavaScript'>
-			alert('Vous n\'avez pas selectionné une annonce');
+			alert('Vous n\'avez pas selectionnÃ© une annonce');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php

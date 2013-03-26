@@ -4,7 +4,10 @@
 	session_unset(); 
 	session_destroy();
 ?>
-<script language='JavaScript'>
-	alert('Vous êtes déconnecté!');
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<script>
+	alert('Vous Ãªtes dÃ©connectÃ©!');
 	setTimeout("document.location='../index.php?page=accueil.php'", 500);
 </script>

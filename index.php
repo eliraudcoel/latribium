@@ -6,15 +6,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
 	<div id="global">
 		<head>
-			<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-			<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 			<link href="css/site.css" rel="stylesheet" type="text/css" />
 			<link href="css/popupCss.css" rel="stylesheet" type="text/css" />
 			<header>
 				<nav id="menu">
 					<?php
-						include "/include/menu.php";
+						include "include/menu.php";
 					?>
 				</nav>	
 			</header>
@@ -30,7 +29,7 @@
 						<input name="pass" id="pass" type="password" value="Mot de Passe" onclick="this.value=''"/>    
 					  </div>
 					  <div class="d-blank"></div>
-					  <div class="d-login"><input type="image" alt="Login" title="Login" src="/PPEweb/public/img/login-button.png"/></div>
+					  <div class="d-login"><input type="image" alt="Login" title="Login" src="/img/login-button.png"/></div>
 					</div>
 				</form>
 				<!-- End of Login Dialog -->
@@ -45,11 +44,11 @@
 				<?php					
 					if(!isset($_GET["page"]))
 					{
-						include "/pages/accueil.php";
+						include "pages/accueil.php";
 					}
 					else
 					{
-						include "/pages/".$_GET["page"];
+						include "pages/".$_GET["page"];
 					}
 				?>
 			</div>

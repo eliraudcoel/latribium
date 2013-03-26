@@ -15,7 +15,7 @@
 		$extension = strrchr($_FILES['fichierAgenda']['name'], '.');
 		$contenu = fopen($_FILES['fichierAgenda']['tmp_name'], 'rb');
 
-		//Vérifications de sécurité
+		//VÃ©rifications de sÃ©curitÃ©
 		if($extension == $extensions)
 		{
 			$erreur = 'Vous ne devez pas uploader un fichier de type php';
@@ -28,7 +28,7 @@
 		{
 			//On formate le nom du fichier
 			$fichier = strtr($fichier, 
-			'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ', 
+			'Ã€ÃÃ‚ÃƒÃ„Ã…Ã‡ÃˆÃ‰ÃŠÃ‹ÃŒÃÃŽÃÃ’Ã“Ã”Ã•Ã–Ã™ÃšÃ›ÃœÃÃ Ã¡Ã¢Ã£Ã¤Ã¥Ã§Ã¨Ã©ÃªÃ«Ã¬Ã­Ã®Ã¯Ã°Ã²Ã³Ã´ÃµÃ¶Ã¹ÃºÃ»Ã¼Ã½Ã¿', 
 			'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
 			$fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
 			
@@ -61,7 +61,7 @@
 			}
 			?>
 			<script language='JavaScript'> 
-				alert('le fichier a été ajouté!');
+				alert('le fichier a Ã©tÃ© ajoutÃ©!');
 				setTimeout("document.location='../index.php?page=actualites.php'", 500);
 			</script>
 			<?php
@@ -72,7 +72,7 @@
 		}
 	}else{ 
 			?> <script language='JavaScript'> 
-				alert('le fichier n\'a pas été transféré!');
+				alert('le fichier n\'a pas Ã©tÃ© transfÃ©rÃ©!');
 				setTimeout("document.location='../index.php?page=actualites.php'", 500);
 			</script>
 			<?php

@@ -8,7 +8,7 @@
 			$req = $connexion-> exec("DELETE FROM evenement WHERE idEv='".$valeur."'");
 			?>
 			<script language='JavaScript'> 
-				alert('Votre évênement a été supprimé!');
+				alert('Votre Ã©vÃªnement a Ã©tÃ© supprimÃ©!');
 				setTimeout("document.location='../index.php?page=actualites.php&spage=1'", 500);
 			</script>
 			<?php
@@ -16,7 +16,7 @@
 	}else{
 		?>
 			<script language='JavaScript'>
-			alert('Vous n\'avez pas selectionné un évênement');
+			alert('Vous n\'avez pas selectionnÃ© un Ã©vÃªnement');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php

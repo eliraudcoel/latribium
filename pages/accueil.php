@@ -1,19 +1,18 @@
 <center>
 </br>
-<img src="/PPEweb/public/img/orchestre.jpg"/>
-<h2>Bienvenue à Latribium!</h2>
-<h2>Nous avons décidé de créer un site communautaire où tout le monde est le ou la bien venu(e).
-</br>Depuis l'avancée et le pouvoir d'Internet, nous nous sommes aperçu qu'il manquait un espace 
-où tout les élèves jeunes, comme adultes, pourraient discuter et partager leur passion, la musique.
-Cela permettra de partager avec des anciens élèves du conservatoire vos projets, difficultés ou 
-tout simplement partager des évènements qui se sont déroulés dans notre conservatoire.
-Nous vous permettons, également de vendre ou acheter des partitions, des instruments ou matériels.
-En tant que directeur du conservatoire, j'espère que ce site répondra à vos attentes.
-
-<br/><br/><span class="marge">Votre Directeur</span>
-<br/><span class="marge">Cédric Perrier</span>
-
-</h2>
+<img src="/img/orchestre.jpg"/>
+<?php
+echo'<h2>Bienvenue Ã  Latribium!</h2>';
+echo'<h2>Nous avons dÃ©cidÃ© de crÃ©er un site communautaire oÃ¹ tout le monde est le ou la bien venu(e).
+Depuis l\'avancÃ©e et le pouvoir d\'Internet, nous nous sommes aperÃ§u qu\'il manquait un espace 
+oÃ¹ tout les Ã©lÃ¨ves jeunes, comme adultes, pourraient discuter et partager leur passion, la musique.
+Cela permettra de partager avec des anciens Ã©lÃ¨ves du conservatoire vos projets, difficultÃ©s ou 
+tout simplement partager des Ã©vÃ¨nements qui se sont dÃ©roulÃ©s dans notre conservatoire.
+Nous vous permettons, Ã©galement de vendre ou acheter des partitions, des instruments ou matÃ©riels.
+En tant que directeur du conservatoire, j\'espÃ¨re que ce site rÃ©pondra Ã  vos attentes.';
+echo'<br/><br/><span class="marge">Votre Directeur</span>';
+echo'<br/><span class="marge">CÃ©dric Perrier</span></h2>';
+?>
 </center>
 <script>
 	document.getElementById("Accueil").style.color="#DCDCDC";

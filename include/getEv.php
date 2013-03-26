@@ -21,7 +21,7 @@
 	$stmt->execute();
 	?>
 		<script language='JavaScript'> 
-			alert('le fichier a été ajouté!');
+			alert('le fichier a Ã©tÃ© ajoutÃ©!');
 			setTimeout("document.location='../index.php?page=actualites.php&spage=1'", 500);
 		</script>
 	<?php

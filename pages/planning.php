@@ -6,17 +6,17 @@
 	
 	if(!isset($_SESSION['pseudo']))
 	{
-		echo('<script>alert(\'Vous ne vous êtes pas identifié! Vous ne pouvez pas accéder à cette partie du site... Inscrivez-vous!\');');
+		echo('<script>alert(\'Vous ne vous Ãªtes pas identifiÃ©! Vous ne pouvez pas accÃ©der Ã  cette partie du site... Inscrivez-vous!\');');
 		echo('setTimeout("document.location=\'./index.php?page=accueil.php\'", 500);</script>');
 	}
 	else
 	{
 ?>
 		<center>
-		<h1> Tous à vos agendas!</h1>
+		<h1> Tous &agrave; vos agendas!</h1>
 		<div id="ajouterAgenda">
 			<a href="/PPEweb/public/index.php?page=ajouteAgenda.php" class="btajout">Ajouter un calendrier</a>
-			<a href="/PPEweb/public/index.php?page=suppAgenda.php" class="btsupp">Supprimer vos actualités</a>
+			<a href="/PPEweb/public/index.php?page=suppAgenda.php" class="btsupp">Supprimer vos calendriers</a>
 		</div>
 		<div id="agenda">
 			<?php
@@ -27,7 +27,7 @@
 				{
 					echo('<form method="post" action="include/getUpload.php"><br/>');
 					echo('<input type="hidden" value="'.$row['idAgenda'].'" name="idFichier"/>');
-					echo('<h4>'.$row['nomAgenda'].'</h4> <input type="image" id="telecharge'.$i.'" src="/PPEweb/public/img/logoTelecharge.png" name="'.$row['nomAgenda'].'" alt="telecharge'.$i.'"/>');
+					echo('<h4>'.$row['nomAgenda'].'</h4> <input type="image" id="telecharge'.$i.'" src="./img/logoTelecharge.png" name="'.$row['nomAgenda'].'" alt="telecharge'.$i.'"/>');
 					echo('</form>');
 					$i = $i+1;
 				}

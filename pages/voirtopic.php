@@ -4,11 +4,11 @@ if(!isset($_SESSION))
 	session_start(); 
 }
 $titre="Voir un sujet";
-include("/include/conn.php");
-include("/include/debut.php");
-include("/include/bbcode.php"); //On verra plus tard ce qu'est ce fichier
+include("./include/conn.php");
+include("./include/debut.php");
+include("./include/bbcode.php"); //On verra plus tard ce qu'est ce fichier
   
-//On récupère la valeur de t
+//On rÃ©cupÃ¨re la valeur de t
 $topic = (int) $_GET['t'];
   
 //A partir d'ici, on va compter le nombre de messages pour n'afficher que les 15 premiers
@@ -25,9 +25,9 @@ $totalDesMessages = $data['topic_post'] + 1;
 $nombreDeMessagesParPage = 15;
 $nombreDePages = ceil($totalDesMessages / $nombreDeMessagesParPage);
 
-echo '<p><i>Vous êtes ici</i> : <a href="/PPEweb/public/index.php?page=indexForum.php">Index du forum</a> --> 
-<a href="/PPEweb/public/index.php?page=voirforum.php&f='.$forum.'">'.stripslashes(htmlspecialchars($data['forum_name'])).'</a>
- --> <a href="/PPEweb/public/index.php?page=voirtopic.php&t='.$topic.'">'.stripslashes(htmlspecialchars($data['topic_titre'])).'</a>';
+echo '<p><a href="index.php?page=indexForum.php">Index du forum</a> --> 
+<a href="./index.php?page=voirforum.php&f='.$forum.'">'.stripslashes(htmlspecialchars($data['forum_name'])).'</a>
+ --> <a href="./index.php?page=voirtopic.php&t='.$topic.'">'.stripslashes(htmlspecialchars($data['topic_titre'])).'</a>';
 echo '<h1>'.stripslashes(htmlspecialchars($data['topic_titre'])).'</h1><br /><br />';
 
 //Nombre de pages
@@ -43,21 +43,51 @@ for ($i = 1 ; $i <= $nombreDePages ; $i++)
     }
     else
     {
-    echo '<a href="/PPEweb/public/index.php?page=voirtopic.php&t='.$topic.'&pg='.$i.'">
+    echo '<a href="./index.php?page=voirtopic.php&t='.$topic.'&pg='.$i.'">
     ' . $i . '</a> ';
     }
 }
 echo'</p>';
   
 $premierMessageAafficher = ($page - 1) * $nombreDeMessagesParPage;
- 
+
+//Topic dÃ©jÃ  consultÃ© ?
+$query=$connexion->prepare('SELECT COUNT(*) FROM forum_topic_view WHERE tv_topic_id = :topic AND tv_id = :id');
+$query->bindValue(':topic',$topic,PDO::PARAM_INT);
+$query->bindValue(':id',$id,PDO::PARAM_INT);
+$query->execute();
+$nbr_vu=$query->fetchColumn();
+$query->CloseCursor();
+if ($nbr_vu == 0) //Si c'est la premiÃ¨re fois on insÃ¨re une ligne entiÃ¨re
+{
+	$query=$connexion->prepare('INSERT INTO forum_topic_view 
+	(tv_id, tv_topic_id, tv_forum_id, tv_post_id)
+	VALUES (:id, :topic, :forum, :last_post)');
+	$query->bindValue(':id',$id,PDO::PARAM_INT);
+	$query->bindValue(':topic',$topic,PDO::PARAM_INT);
+	$query->bindValue(':forum',$forum,PDO::PARAM_INT);
+	$query->bindValue(':last_post',$data['topic_last_post'],PDO::PARAM_INT);
+	$query->execute();
+	$query->CloseCursor();
+}
+else //Sinon, on met simplement Ã  jour
+{
+	$query=$connexion->prepare('UPDATE forum_topic_view SET tv_post_id = :last_post 
+	WHERE tv_topic_id = :topic 
+	AND tv_id = :id');
+	$query->bindValue(':last_post',$data['topic_last_post'],PDO::PARAM_INT);
+	$query->bindValue(':topic',$topic,PDO::PARAM_INT);
+	$query->bindValue(':id',$id,PDO::PARAM_INT);
+	$query->execute();
+	$query->CloseCursor();
+}
   
-//On affiche l'image répondre
-echo'<a href="/PPEweb/public/index.php?page=poster.php&action=repondre&amp;t='.$topic.'">
-<img src="./img/icon_forum/repondre.gif" alt="Répondre" title="Répondre à ce topic" /></a>';
+//On affiche l'image rÃ©pondre
+echo'<a href="./index.php?page=poster.php&action=repondre&amp;t='.$topic.'">
+<img src="./img/icon_forum/repondre.gif" alt="RÃ©pondre" title="RÃ©pondre Ã  ce topic" /></a>';
   
 //On affiche l'image nouveau topic
-echo'<a href="/PPEweb/public/index.php?page=poster.php&action=nouveautopic&amp;f='.$data['forum_id'].'">
+echo'<a href="index.php?page=poster.php&action=nouveautopic&amp;f='.$data['forum_id'].'">
 <img src="./img/icon_forum/nouveau.gif" alt="Nouveau topic" title="Poster un nouveau topic" /></a>';
 $query->CloseCursor(); 
 //Enfin on commence la boucle !
@@ -72,11 +102,11 @@ $query->bindValue(':topic',$topic,PDO::PARAM_INT);
 $query->bindValue(':premier',(int) $premierMessageAafficher,PDO::PARAM_INT);
 $query->bindValue(':nombre',(int) $nombreDeMessagesParPage,PDO::PARAM_INT);
 $query->execute();
-  
-//On vérifie que la requête a bien retourné des messages
+
+//On vÃ©rifie que la requÃªte a bien retournÃ© des messages
 if ($query->rowCount()<1)
 {
-        echo'<p>Il n y a aucun post sur ce topic, vérifiez l url et reessayez</p>';
+        echo'<p>Il n y a aucun post sur ce topic, v&eacute;rifiez l url et reessayez</p>';
 }
 else
 {
@@ -89,38 +119,38 @@ else
         <?php
         while ($data = $query->fetch())
         {
-//On commence à afficher le pseudo du créateur du message :
-         //On vérifie les droits du membre
-         //(partie du code commentée plus tard)
+		//On commence Ã  afficher le pseudo du crÃ©ateur du message :
+         //On vÃ©rifie les droits du membre
+         //(partie du code commentÃ©e plus tard)
          echo'<tr><td><strong>
-         <a href="/PPEweb/public/index.php?page=voirprofil.php&m='.$data['idUtil'].'&amp;action=consulter">
+         <a href="index.php?page=voirprofil.php&m='.$data['idUtil'].'&amp;action=consulter">
          '.stripslashes(htmlspecialchars($data['pseudo'])).'</a></strong></td>';
             
          /* Si on est l'auteur du message, on affiche des liens pour
-         Modérer celui-ci.
-         Les modérateurs pourront aussi le faire, il faudra donc revenir sur
+         ModÃ©rer celui-ci.
+         Les modÃ©rateurs pourront aussi le faire, il faudra donc revenir sur
          ce code un peu plus tard ! */    
     
          if ($id == $data['post_createur'])
          {
-         echo'<td id=p_'.$data['post_id'].'>Posté à '.date('H\hi \l\e d M y',$data['post_time']).'
-         <a href="/PPEweb/public/index.php?page=poster.php&p='.$data['post_id'].'&amp;action=delete">
+         echo'<td id=p_'.$data['post_id'].'>PostÃ© Ã  '.date('H\hi \l\e d M y',$data['post_time']).'
+         <a href="index.php?page=poster.php&p='.$data['post_id'].'&amp;action=delete">
          <img src="./img/icon_forum/supprimer.gif" alt="Supprimer"
          title="Supprimer ce message" /></a>   
-         <a href="/PPEweb/public/index.php?page=poster.php&p='.$data['post_id'].'&amp;action=edit">
+         <a href="index.php?page=poster.php&p='.$data['post_id'].'&amp;action=edit">
          <img src="./img/icon_forum/editer.gif" alt="Editer"
          title="Editer ce message" /></a></td></tr>';
          }
          else
          {
          echo'<td>
-         Posté à '.date('H\hi \l\e d M y',$data['post_time']).'
+         PostÃ© Ã  '.date('H\hi \l\e d M y',$data['post_time']).'
          </td></tr>';
          }
         
-         //Détails sur le membre qui a posté
+         //DÃ©tails sur le membre qui a postÃ©
          echo'<tr><td>
-         <img src="./img/avatars/'.$data['avatar'].'" alt="" />
+         <img src="./avatars/'.$data['avatar'].'" alt="" class="avatar" />
          <br />Membre inscrit le '.date('d/m/Y',$data['dateInscription']).'
          <br />Messages : '.$data['post'].'<br /></td>';
                 
@@ -131,7 +161,7 @@ else
          $query->CloseCursor();
           ?>
 </table>
-<?php
+<?php		
         echo '<p>Page : ';
         for ($i = 1 ; $i <= $nombreDePages ; $i++)
         {
@@ -141,7 +171,7 @@ else
                 }
                 else
                 {
-                echo '<a href="/PPEweb/public/index.php?page=voirtopic.php&t='.$topic.'&amp;pg='.$i.'">
+                echo '<a href="index.php?page=voirtopic.php&t='.$topic.'&amp;pg='.$i.'">
                 ' . $i . '</a> ';
                 }
         }
@@ -154,7 +184,7 @@ else
         $query->execute();
         $query->CloseCursor();
  
-} //Fin du if qui vérifiait si le topic contenait au moins un message
+} //Fin du if qui vÃ©rifiait si le topic contenait au moins un message
 ?>          
 </div>
 </body>

@@ -1,8 +1,8 @@
 <?php 
-$hote='localhost';
-$nom_bd='siteviolon';
-$utilisateur='root';
-$mot_passe='';
+$hote='mysql.hostinger.fr';
+$nom_bd='u464557778_latrib';
+$utilisateur='u464557778_emma';
+$mot_passe='melanie1806';
 try
 {
     $connexion = new PDO('mysql:host='.$hote.';dbname='.$nom_bd, $utilisateur, $mot_passe);

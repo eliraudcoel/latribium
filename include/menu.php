@@ -6,7 +6,7 @@
 ?>
 <head>
 	<link href="css/popupCss.css" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>
 	function connexion()
 	{
@@ -81,28 +81,27 @@
 </script>
 </head>
 <body>
-	<center>
-		<?php
-			include 'conn.php';
-			$i = 1;
-			
-			for($i=1;$i<=6;$i++)
+	<?php
+		include 'conn.php';
+		$i = 1;
+		echo '<div id="table" class="table centre">';
+		for($i=1;$i<=6;$i++)
+		{
+			$reponse = $connexion->query("select MenuNom,RefMenu from menu where idMenu='$i';");
+			echo('<menu type="toolbar" id="navigation" class="table-cell">');
+			while($row = $reponse->fetch())
 			{
-				$reponse = $connexion->query("select MenuNom,RefMenu from menu where idMenu='$i';");
-				echo('<menu type="toolbar" id="navigation">');
-				while($row = $reponse->fetch())
-				{
-					echo('<a id="'.$row['MenuNom'].'" href="index.php?page='.$row['RefMenu'].'">&nbsp;&nbsp;'.$row['MenuNom'].'</a>');
-				}
+				echo'<a id="'.$row['MenuNom'].'" href="index.php?page='.$row['RefMenu'].'">'.$row['MenuNom'].'</a>';
+				echo('</menu>');
 			}
+		}
 
-			if(isset($_SESSION['pseudo'])){ 
-				echo('<form action="include/logout.php"><input type="image" id="deconnexion" src="/PPEweb/public/img/BoutonDeconnexion.jpg" name="deconnexion" alt="Deconnexion"/></form>');
-			}
-			else{ 
-				echo('&nbsp;&nbsp;<input type="image" id="connexion" onclick="connexion();" src="/PPEweb/public/img/BoutonConnexion.jpg" name="connexion" alt="Connexion"/>');
-			}
-			echo('</menu>');
-		?>	
-	</center>
+		if(isset($_SESSION['pseudo'])){ 
+			echo('<form action="include/logOut.php" class="table-cell"><input type="image" class="buttonCo" id="deconnexion" src="/img/BoutonDeconnexion.jpg" name="deconnexion" alt="Deconnexion"/></form>');
+		}
+		else{ 
+			echo('<input type="image" id="connexion" class="buttonCo table-cell" onclick="connexion();" src="/img/BoutonConnexion.jpg" name="connexion" alt="Connexion"/>');
+		}
+		echo'</div>';
+	?>	
 </body>

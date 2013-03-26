@@ -34,7 +34,12 @@
 				}
 				else
 				{
-
+					?>
+					<script language='JavaScript'>
+						alert('Voous n\'avez pas validÃ© votre adresse email!');
+						window.onload=function(){setTimeout(function(){history.back()},500);}
+					</script>
+					<?php
 				}
 			}
 			else{
@@ -49,7 +54,7 @@
 		{
 				?>
 					<script language='JavaScript'>
-					alert('Erreur ! Votre connexion ne peut être établie...');
+					alert('Erreur ! Votre connexion ne peut Ãªtre Ã©tablie...');
 					window.onload=function(){setTimeout(function(){history.back()},500);}
 					</script>
 				<?php

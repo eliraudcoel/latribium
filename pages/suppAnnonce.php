@@ -18,7 +18,7 @@
 			{
 				if($i%2 == 1)
 				{
-					echo '<img class="left" align="left" src="data:'.$row2['typeImage'].';base64,'.base64_encode($row2['contenuImage']).'" alt="'.$row2['nomImage'].'" title="'.$row2['nomImage'].'" >';				
+					echo '<img class="left" align="left" src="data:'.$row2['typeImage'].';base64,'.base64_encode($row2['contenuImage']).'" alt="'.$row2['nomImage']'" title="'.$row2['nomImage'].'" >';				
 					$cote = "left";
 				}else
 				{
@@ -33,7 +33,7 @@
 			echo '&nbsp;&nbsp;<h4>'.$row['descriptionVente'].'</h4>';
 			echo '</br>';
 			echo '<h4 align="'.$cote.'">Vendu par '.$row['auteurVente'].'</h4>';
-			echo '<h4 align="'.$cote.'">Prix : '.$row['prixVente'].'€</h4>';
+			echo '<h4 align="'.$cote.'">Prix : '.$row['prixVente'].'â‚¬</h4>';
 			echo '<br/><br/>';
 			$j=$j+1;
 		}

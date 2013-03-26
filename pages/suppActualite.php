@@ -36,7 +36,7 @@
 			$date = $row['dateArt'];
 			list($year, $month, $day) = explode('-', $date);
 
-			echo '<h4 align="'.$cote.'">écrit le : '.$day.'/'.$month.'/'.$year.' par '.$row['auteur'].'</h4>';
+			echo '<h4 align="'.$cote.'">Ã©crit le : '.$day.'/'.$month.'/'.$year.' par '.$row['auteur'].'</h4>';
 			echo '</div>';
 			echo '<br/><br/>';
 			$j=$j+1;

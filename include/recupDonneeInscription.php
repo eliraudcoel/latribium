@@ -20,13 +20,13 @@
 	
 	$pagePrecedente = $_SERVER["HTTP_REFERER"];
 	
-	//Vérification de l'avatar :
+	//VÃ©rification de l'avatar :
 	if(is_uploaded_file($_FILES["imageAvatar"]["tmp_name"]))
 	{
-		//On définit les variables :
-		$maxsize = 10024; //Poid de l'image
-		$maxwidth = 100; //Largeur de l'image
-		$maxheight = 100; //Longueur de l'image
+		//On dÃ©finit les variables :
+		$maxsize = 102400; //Poid de l'image
+		$maxwidth = 900; //Largeur de l'image
+		$maxheight = 900; //Longueur de l'image
 		$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'bmp' ); //Liste des extensions valides
 		 
 		if ($_FILES['imageAvatar']['error'] > 0)
@@ -60,12 +60,12 @@
 			$extension_upload = strtolower(substr(  strrchr($avatar['name'], '.')  ,1));
 			$name = time();
 			$nomavatar = str_replace(' ','',$name).".".$extension_upload;
-			$name = "C:\wamp\www\PPEweb\public\img\avatars".str_replace(' ','',$name).".".$extension_upload;
+			$name = "../avatars/".str_replace(' ','',$name).".".$extension_upload;
 			if(!move_uploaded_file($avatar['tmp_name'],$name))
 			{
 				exit("Impossible de copier le fichier dans $content_dir");
 			}
-			echo "Le fichier a bien été uploadé";
+			echo "Le fichier a bien Ã©tÃ© uploadÃ©";
 		}
 	}
 	
@@ -171,24 +171,24 @@
 		$sql->execute();
 		$requeteSql2=$connexion -> query($sql2) or die ('Erreur SQL !'.mysql_error());
 		
-		echo("<script language='JavaScript'>alert('Votre inscription a été pris en compte, vous allez recevoir un email')</script>");
+		echo("<script language='JavaScript'>alert('Votre inscription a Ã©tÃ© pris en compte, vous allez recevoir un email')</script>");
 		
-		// Préparation du mail contenant le lien d'activation
+		// PrÃ©paration du mail contenant le lien d'activation
 		$destinataire = $email;
 		$sujet = "Activer votre compte" ;
-		$entete = "From: latribium@free.fr" ;
+		$entete = "From: admin@latribium.p.ht" ;
 
-		// Le lien d'activation est composé du login(log) et de la clé(cle)
+		// Le lien d'activation est composÃ© du login(log) et de la clÃ©(cle)
 		$message = 'Bienvenue sur La tribium,
 
 		Pour activer votre compte, veuillez cliquer sur le lien ci dessous
 		ou copier/coller dans votre navigateur internet.
 
-		http://127.0.0.1/PPEweb/public/include/validation.php?log='.urlencode($pseudo).'&cle='.urlencode($cle).'
+		http://latribium.p.ht/index.php?page=validation.php&log='.urlencode($pseudo).'&cle='.urlencode($cle).'
 
 
 		---------------
-		Ceci est un mail automatique, Merci de ne pas y répondre.';
+		Ceci est un mail automatique, Merci de ne pas y rÃ©pondre.';
 
 
 		mail($destinataire, $sujet, $message, $entete) ;
@@ -201,7 +201,7 @@
 	{
 		?>
 			<script language='JavaScript'>
-			alert('Oups!!\nVotre pseudo est déjà utilisé, veuillez en choisir un autre.\nVotre email est déjà utilisé, vous etes peut-être déjà inscrit.\nVeuillez changer vos données s\'il-vous-plaît');
+			alert('Oups!!\nVotre pseudo est dÃ©jÃ  utilisÃ©, veuillez en choisir un autre.\nVotre email est dÃ©jÃ  utilisÃ©, vous Ãªtes peut-Ãªtre dÃ©jÃ  inscrit.\nVeuillez changer vos donnÃ©es s\'il-vous-plaÃ®t');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php
@@ -211,7 +211,7 @@
 	{
 		?>
 			<script language='JavaScript'>
-			alert('Oups!!\nVotre pseudo est déjà utilisé, veuillez en choisir un autre. \nVeuillez changer vos données s\'il-vous-plaît');
+			alert('Oups!!\nVotre pseudo est dÃ©jÃ  utilisÃ©, veuillez en choisir un autre. \nVeuillez changer vos donnÃ©es s\'il-vous-plaÃ®t');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php
@@ -221,7 +221,7 @@
 	{
 		?>
 			<script language='JavaScript'>
-			alert('Oups!!\nVotre email est déjà utilisé, vous etes peut-être déjà inscrit.\nVeuillez changer vos données s\'il-vous-plaît');
+			alert('Oups!!\nVotre email est dÃ©jÃ  utilisÃ©, vous etes peut-Ãªtre dÃ©jÃ  inscrit.\nVeuillez changer vos donnÃ©es s\'il-vous-plaÃ®t');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php

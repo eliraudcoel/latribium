@@ -4,9 +4,9 @@ if(!isset($_SESSION))
 	session_start(); 
 }
 $titre="Profil";
-include("/include/conn.php");
-include("/include/debut.php");
-//On récupère la valeur de nos variables passées par URL
+include("./include/conn.php");
+include("./include/debut.php");
+//On rÃ©cupÃ¨re la valeur de nos variables passÃ©es par URL
 $action = isset($_GET['action'])?htmlspecialchars($_GET['action']):'consulter';
 $membre = isset($_GET['m'])?(int) $_GET['m']:'';
 
@@ -15,20 +15,26 @@ switch($action)
 {
     //Si c'est "consulter"
     case "consulter":
-       //On récupère les infos du membre
+	 
+       //On rÃ©cupÃ¨re les infos du membre
        $query=$connexion->prepare('SELECT pseudo, avatar,
        email, signature, post, dateInscription FROM utilisateur WHERE idUtil =:membre');
        $query->bindValue(':membre',$membre, PDO::PARAM_INT);
        $query->execute();
        $data=$query->fetch();
+	   
+	   if($pseudo == $data['pseudo'])
+	   {
+		echo'<a href="./index.php?page=voirprofil.php&m='.stripslashes(htmlspecialchars($data['idUtil'])).'&amp;action=modifier" class="btajout">Modifier votre profil</a>';
+	   }
  
        //On affiche les infos sur le membre
-       echo '<p><i>Vous êtes ici</i> : <a href="/PPEweb/public/index.php?page=indexForum.php">Index du forum</a> --> 
+       echo '<p><a href="index.php?page=indexForum.php">Index du forum</a> --> 
        profil de '.stripslashes(htmlspecialchars($data['pseudo']));
        echo'<h1>Profil de '.stripslashes(htmlspecialchars($data['pseudo'])).'</h1>';
         
-       echo'<img src="./img/avatars/'.$data['avatar'].'"
-       alt="Ce membre n a pas d avatar" />';
+       echo'<img src="./avatars/'.$data['avatar'].'"
+       alt="Ce membre n a pas d avatar" class="avatar"/>';
         
        echo'<p><strong>Adresse E-Mail : </strong>
        <a href="mailto:'.stripslashes($data['email']).'">
@@ -36,7 +42,7 @@ switch($action)
   
        echo'Ce membre est inscrit depuis le
        <strong>'.date('d/m/Y',$data['dateInscription']).'</strong>
-       et a posté <strong>'.$data['post'].'</strong> messages
+       et a postÃ© <strong>'.$data['post'].'</strong> messages
        <br /><br />';
 	   '</p>';
        $query->CloseCursor();
@@ -44,9 +50,9 @@ switch($action)
 	   
 	//Si on choisit de modifier son profil
     case "modifier":
-    if (empty($_POST['sent'])) // Si on la variable est vide, on peut considérer qu'on est sur la page de formulaire
+    if (empty($_POST['sent'])) // Si on la variable est vide, on peut considÃ©rer qu'on est sur la page de formulaire
     {
-        //On commence par s'assurer que le membre est connecté
+        //On commence par s'assurer que le membre est connectÃ©
         if ($id==0) erreur(ERR_IS_NOT_CO);
  
         //On prend les infos du membre
@@ -55,10 +61,10 @@ switch($action)
         $query->bindValue(':id',$id,PDO::PARAM_INT);
         $query->execute();
         $data=$query->fetch();
-        echo '<p><i>Vous êtes ici</i> : <a href="/PPEweb/public/index.php?page=indexForum.php">Index du forum</a> --> Modification du profil';
+        echo '<p><a href="index.php?page=indexForum.php">Index du forum</a> --> Modification du profil';
         echo '<h1>Modifier son profil</h1>';
          
-        echo '<form method="post" action="/PPEweb/public/index.php?page=voirprofil.php&action=modifier" enctype="multipart/form-data">
+        echo '<form method="post" action="index.php?page=voirprofil.php&action=modifier" enctype="multipart/form-data">
         
   
         <fieldset><legend>Identifiants</legend>
@@ -81,7 +87,7 @@ switch($action)
         <label><input type="checkbox" name="delete" value="Delete" />
         Supprimer l avatar</label>
         Avatar actuel :
-        <img src="./img/avatars/'.$data['avatar'].'"
+        <img src="./avatars/'.$data['avatar'].'"
         alt="pas d avatar" />
       
         <br /><br />
@@ -99,7 +105,7 @@ switch($action)
     }   
     else //Cas du traitement
     {
-		 //On déclare les variables 
+		 //On dÃ©clare les variables 
 	 
 		$mdp_erreur = NULL;
 		$email_erreur1 = NULL;
@@ -123,24 +129,24 @@ switch($action)
 		$confirm = md5($_POST['confirm']);
 	 
 	 
-		//Vérification du mdp
+		//VÃ©rification du mdp
 		if ($pass != $confirm || empty($confirm) || empty($pass))
 		{
-			 $mdp_erreur = "Votre mot de passe et votre confirmation diffèrent ou sont vides";
+			 $mdp_erreur = "Votre mot de passe et votre confirmation diffÃ¨rent ou sont vides";
 			 $i++;
 		}
 	 
-		//Vérification de l'adresse email
-		//Il faut que l'adresse email n'ait jamais été utilisée (sauf si elle n'a pas été modifiée)
+		//VÃ©rification de l'adresse email
+		//Il faut que l'adresse email n'ait jamais Ã©tÃ© utilisÃ©e (sauf si elle n'a pas Ã©tÃ© modifiÃ©e)
 	 
-		//On commence donc par récupérer le mail
+		//On commence donc par rÃ©cupÃ©rer le mail
 		$query=$connexion->prepare('SELECT email FROM utilisateur WHERE idUtil =:id'); 
 		$query->bindValue(':id',$id,PDO::PARAM_INT);
 		$query->execute();
 		$data=$query->fetch();
 		if (strtolower($data['email']) != strtolower($email))
 		{
-			//Il faut que l'adresse email n'ait jamais été utilisée
+			//Il faut que l'adresse email n'ait jamais Ã©tÃ© utilisÃ©e
 			$query=$connexion->prepare('SELECT COUNT(*) AS nbr FROM utilisateur WHERE email =:mail');
 			$query->bindValue(':mail',$email,PDO::PARAM_STR);
 			$query->execute();
@@ -148,11 +154,11 @@ switch($action)
 			$query->CloseCursor();
 			if(!$mail_free)
 			{
-				$email_erreur1 = "Votre adresse email est déjà utilisé par un membre";
+				$email_erreur1 = "Votre adresse email est dÃ©jÃ  utilisÃ© par un membre";
 				$i++;
 			}
 	 
-			//On vérifie la forme maintenant
+			//On vÃ©rifie la forme maintenant
 			if (!preg_match("#^[a-z0-9A-Z._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $email) || empty($email))
 			{
 				$email_erreur2 = "Votre nouvelle adresse E-Mail n'a pas un format valide";
@@ -160,7 +166,7 @@ switch($action)
 			}
 		}
 	 
-		//Vérification de la signature
+		//VÃ©rification de la signature
 		if (strlen($signature) > 200)
 		{
 			$signature_erreur = "Votre nouvelle signature est trop longue";
@@ -168,11 +174,11 @@ switch($action)
 		}
 	  
 	  
-		//Vérification de l'avatar
+		//VÃ©rification de l'avatar
 	  
 		if (!empty($_FILES['avatar']['size']))
 		{
-			//On définit les variables :
+			//On dÃ©finit les variables :
 			$maxsize = 30072; //Poid de l'image
 			$maxwidth = 100; //Largeur de l'image
 			$maxheight = 100; //Longueur de l'image
@@ -208,7 +214,7 @@ switch($action)
 			}
 		}
 		
-		echo '<p><i>Vous êtes ici</i> : <a href="/PPEweb/public/index.php?page=indexForum.php">Index du forum</a> --> Modification du profil';
+		echo '<p><a href="index.php?page=indexForum.php">Index du forum</a> --> Modification du profil';
 		echo '<h1>Modification d\'un profil</h1>';
 	 
 	  
@@ -226,7 +232,7 @@ switch($action)
 					$query->CloseCursor();
 			}
 	  
-			//Une nouveauté ici : on peut choisis de supprimer l'avatar
+			//Une nouveautÃ© ici : on peut choisis de supprimer l'avatar
 			if (isset($_POST['delete']))
 			{
 					$query=$connexion->prepare('UPDATE utilisateur
@@ -236,10 +242,10 @@ switch($action)
 					$query->CloseCursor();
 			}
 	  
-			echo'<h1>Modification terminée</h1>';
-			echo'<p>Votre profil a été modifié avec succès !</p>';
-			echo'<p>Cliquez <a href="/PPEweb/public/index.php?page=indexForum.php">ici</a> 
-			pour revenir à la page d accueil</p>';
+			echo'<h1>Modification termin&eacute;e</h1>';
+			echo'<p>Votre profil a Ã©tÃ© modifiÃ© avec succÃ©s !</p>';
+			echo'<p>Cliquez <a href="index.php?page=indexForum.php">ici</a> 
+			pour revenir Ã  la page d accueil</p>';
 	  
 			//On modifie la table
 	  
@@ -266,12 +272,12 @@ switch($action)
 			echo'<p>'.$avatar_erreur1.'</p>';
 			echo'<p>'.$avatar_erreur2.'</p>';
 			echo'<p>'.$avatar_erreur3.'</p>';
-			echo'<p> Cliquez <a href="/PPEweb/public/index.php?page=voirprofil.php&action=modifier">ici</a> pour recommencer</p>';
+			echo'<p> Cliquez <a href="index.php?page=voirprofil.php&action=modifier">ici</a> pour recommencer</p>';
 		}
 	} //Fin du else
     break;
   
-default; //Si jamais c'est aucun de ceux-là c'est qu'il y a eu un problème :o
+default; //Si jamais c'est aucun de ceux-lÃ  c'est qu'il y a eu un problÃ¨me :o
 echo'<p>Cette action est impossible</p>';
   
 } //Fin du switch

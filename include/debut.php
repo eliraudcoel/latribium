@@ -3,7 +3,7 @@
 	{ 
 		session_start(); 
 	}
-	//Si le titre est indiqué, on l'affiche entre les balises <title>
+	//Si le titre est indiquÃ©, on l'affiche entre les balises <title>
 	echo (!empty($titre))?'<title>'.$titre.'</title>':'<title> Forum </title>';
 	$balises=(isset($balises))?$balises:0;
 	if($balises)
@@ -74,10 +74,15 @@
 	}	
 //Attribution des variables de session
 $lvl=(isset($_SESSION['level']))?(int) $_SESSION['level']:1;
-$id=(isset($_SESSION['idUtil']))?(int) $_SESSION['idUtil']:0;
 $pseudo=(isset($_SESSION['pseudo']))?$_SESSION['pseudo']:'';
- 
-//On inclue les 2 pages restantes
-include("/include/functions.php");
-include("/include/constants.php");
+
+include 'conn.php';
+$query=$connexion->prepare('SELECT idUtil FROM utilisateur where pseudo = :pseudo');
+$query->bindValue(':pseudo',$pseudo,PDO::PARAM_INT);
+$query->execute();
+while($data = $query->fetch())
+{
+	$id = $data['idUtil'];
+}
+$query->CloseCursor();
 ?>

@@ -8,7 +8,7 @@
 			$req = $connexion-> exec("DELETE FROM agenda WHERE idAgenda='".$valeur."'");
 			?>
 			<script language='JavaScript'> 
-				alert('Votre planning a été supprimé!');
+				alert('Votre planning a Ã©tÃ© supprimÃ©!');
 				setTimeout("document.location='../index.php?page=planning.php'", 500);
 			</script>
 			<?php
@@ -16,7 +16,7 @@
 	}else{
 		?>
 			<script language='JavaScript'>
-			alert('Vous n\'avez pas selectionné un planning');
+			alert('Vous n\'avez pas selectionnÃ© un planning');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php

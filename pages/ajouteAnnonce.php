@@ -13,7 +13,7 @@
 		?>
 		<h3>Photo : </h3></br><input type="file" name="imageAnnonce" id="imageAnnonce">
 		<h3>Titre de votre annonce : </h3></br><input type="text" name="titreAnnonce" id="titreAnnonce">
-		<h3>Prix de l'article : </h3></br><input type="text" placeholder="Ex: 15.20" name="prixAnnonce" id="prixAnnonce"> €
+		<h3>Prix de l'article : </h3></br><input type="text" placeholder="Ex: 15.20" name="prixAnnonce" id="prixAnnonce"> â‚¬
 		<h3>Description de votre annonce : </h3></br><textarea name="descAnnonce" rows="5" cols="30"></textarea>
 		</br><input type="submit" name="envoyer" class="bt" value="Ajouter l'annonce">
 	</form>

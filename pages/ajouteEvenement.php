@@ -31,5 +31,5 @@
 	</script>
 </form>
 <script>
-	document.getElementById("Actualités").style.color="#DCDCDC";
+	document.getElementById("ActualitÃ©s").style.color="#DCDCDC";
 </script>

@@ -9,7 +9,7 @@
 			$req2 = $connexion -> exec("DELETE FROM article WHERE idArticle='".$valeur."'");
 			?>
 			<script language='JavaScript'> 
-				alert('Votre actualité a été supprimé!');
+				alert('Votre actualitÃ© a Ã©tÃ© supprimÃ©!');
 				setTimeout("document.location='../index.php?page=actualites.php&spage=1'", 500);
 			</script>
 			<?php
@@ -17,7 +17,7 @@
 	}else{
 		?>
 			<script language='JavaScript'>
-			alert('Vous n\'avez pas selectionné une actualité');
+			alert('Vous n\'avez pas selectionnÃ© une actualitÃ©');
 			window.onload=function(){setTimeout(function(){history.back()},500);}
 			</script>
 		<?php
