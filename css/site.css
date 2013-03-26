@@ -1,0 +1,442 @@
+body{
+	width:100%;
+	height:100%;
+	background-color:#778899;
+}
+
+header{
+	width:92%;
+	height:auto;
+	margin:auto;
+}
+
+nav{
+	width:100%;
+	height:50px;
+	margin:auto;
+	padding-top : 10px;
+	background-color:#808080;
+}
+
+menu{
+	text-align: center;
+	display: inline; 
+}
+
+menu>a{
+	color : #2F4F4F;
+	font-family:cursive;
+	font-size:25px;
+	text-decoration:none;
+}
+
+menu>a:hover{
+	color:#DCDCDC;
+}
+
+form{
+	width:96%;
+	height:auto;
+	float:right;
+}
+
+menu>input{
+	width:30px;
+	height:30px;
+}
+menu>form>input{
+	width:30px;
+	height:30px;
+}
+menu>form{
+	width:30px;
+	height:30px;
+}
+
+#article{
+	width:89%;
+	height:auto;
+	margin-right:4%;
+	margin-left:4%;
+	padding:20px;
+	background-color:#C0C0C0;
+	position:absolute;
+}
+
+h1,h2,h3,h4,h6{
+	font-style: italic;
+	color:#696969;
+}
+
+#article>img{
+	width:96%;
+}
+#actu{
+	width:58%;
+	height:auto;
+	float: right;
+	display:block;
+}
+#agenda{
+	width:80%;
+	height:auto;
+}
+
+#agenda>form{
+	width: 40%;
+	height: 10%;
+}
+
+#agenda>form>h4{
+	width:250px;
+	float: left;
+}
+#agenda>form>input{
+	width:40px;
+	height:40px;
+}
+#ajouterAgenda{
+	width:20%;
+	float: left;
+}
+#ajouterAgenda>a.btajout{
+	display:block;
+	height:100%;
+	width:100%;
+}
+#ajouterAgenda>a.btsupp{
+	display:block;
+	height:100%;
+	width:100%;
+}
+#ajouterActu>a.a.btajout{
+	height:4%;
+	width:4%;
+}
+#ajouterActu>a.btsupp{
+	height:4%;
+	width:4%;
+}
+#ajouteCalendrier>a.a.btajout{
+	height:4%;
+	width:4%;
+}
+#ajouteCalendrier>a.btsupp{
+	height:4%;
+	width:4%;
+}
+#ajouteCalendrier{
+	width:40%;
+	height:auto;
+}
+#calendrier{
+	width:40%;
+	height:auto;
+	float :left;
+}
+#annonces{
+	width:70%;
+	height:auto;
+}
+#suppActu{
+	width:80%;
+	float: right;
+}
+
+.right{	
+	display:block;
+	width:200px;
+	height:200px;
+	float: both;
+}
+.left{	
+	width:200px;
+	height:200px;
+	float: both;
+}
+
+#suppActu>input.submit{
+	width:15%;
+	height:10%;
+}
+#inscription>input.submit{
+	width:10%;
+	height:10%;
+}
+.submit {
+	font-size:12px;
+	text-align: center;
+	margin-top:10px;
+	padding: 9px 34px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	
+	color: #ffffff;
+	background-color: #698B10;
+	background-repeat: repeat-x;
+	
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#89B814), to(#698B10));
+	background-image: -moz-linear-gradient(top, #89B814, #698B10);
+	background-image: -ms-linear-gradient(top, #89B814, #698B10);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89B814), color-stop(100%, #698B10));
+	background-image: -webkit-linear-gradient(top, #89B814, #698B10);
+	background-image: -o-linear-gradient(top, #89B814, #698B10);
+	background-image: linear-gradient(top, #89B814, #698B10);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89B814', endColorstr='#698B10', GradientType=0);
+	
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	
+	border: 1px solid #698B10;
+	border-color: #698B10 #698B10 #465F05;
+	
+	border-radius: 4px;
+	
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+	-webkit-transition: 0.1s linear all;
+	-moz-transition: 0.1s linear all;
+	-ms-transition: 0.1s linear all;
+	-o-transition: 0.1s linear all;
+	transition: 0.1s linear all;
+}		
+.submit:hover {
+	  background-position: 0 -15px;
+	  text-decoration: none;
+	}
+.page {
+	width:10px;
+	height:18px;
+	font-size:12px;
+	clear:both;
+	text-align: center;
+	margin-top:5px;
+	padding: 6px 18px 6px;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	
+	color: #ffffff;
+	background-color: #698B10;
+	background-repeat: repeat-x;
+	
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#89B814), to(#698B10));
+	background-image: -moz-linear-gradient(top, #89B814, #698B10);
+	background-image: -ms-linear-gradient(top, #89B814, #698B10);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89B814), color-stop(100%, #698B10));
+	background-image: -webkit-linear-gradient(top, #89B814, #698B10);
+	background-image: -o-linear-gradient(top, #89B814, #698B10);
+	background-image: linear-gradient(top, #89B814, #698B10);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89B814', endColorstr='#698B10', GradientType=0);
+	
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	
+	border: 1px solid #698B10;
+	border-color: #698B10 #698B10 #465F05;
+	
+	border-radius: 4px;
+	
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+	-webkit-transition: 0.1s linear all;
+	-moz-transition: 0.1s linear all;
+	-ms-transition: 0.1s linear all;
+	-o-transition: 0.1s linear all;
+	transition: 0.1s linear all;
+}		
+.page:hover {
+	  background-position: 0 -15px;
+	  text-decoration: none;
+	}
+
+.bt {
+	font-size:12px;
+	display:block;
+	clear:both;
+	text-align: center;
+	margin-top:10px;
+	padding: 9px 34px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	
+	color: #ffffff;
+	background-color: #698B10;
+	background-repeat: repeat-x;
+	
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#89B814), to(#698B10));
+	background-image: -moz-linear-gradient(top, #89B814, #698B10);
+	background-image: -ms-linear-gradient(top, #89B814, #698B10);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89B814), color-stop(100%, #698B10));
+	background-image: -webkit-linear-gradient(top, #89B814, #698B10);
+	background-image: -o-linear-gradient(top, #89B814, #698B10);
+	background-image: linear-gradient(top, #89B814, #698B10);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89B814', endColorstr='#698B10', GradientType=0);
+	
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	
+	border: 1px solid #698B10;
+	border-color: #698B10 #698B10 #465F05;
+	
+	border-radius: 4px;
+	
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+	-webkit-transition: 0.1s linear all;
+	-moz-transition: 0.1s linear all;
+	-ms-transition: 0.1s linear all;
+	-o-transition: 0.1s linear all;
+	transition: 0.1s linear all;
+}		
+.bt:hover {
+	  background-position: 0 -15px;
+	  text-decoration: none;
+	}
+	
+.btajout {
+	font-size:12px;
+	clear:both;
+	text-align: center;
+	margin-top:10px;
+	padding: 9px 34px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	
+	color: #ffffff;
+	background-color: #698B10;
+	background-repeat: repeat-x;
+	
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#89B814), to(#698B10));
+	background-image: -moz-linear-gradient(top, #89B814, #698B10);
+	background-image: -ms-linear-gradient(top, #89B814, #698B10);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #89B814), color-stop(100%, #698B10));
+	background-image: -webkit-linear-gradient(top, #89B814, #698B10);
+	background-image: -o-linear-gradient(top, #89B814, #698B10);
+	background-image: linear-gradient(top, #89B814, #698B10);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#89B814', endColorstr='#698B10', GradientType=0);
+	
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	
+	border: 1px solid #698B10;
+	border-color: #698B10 #698B10 #465F05;
+	
+	border-radius: 4px;
+	
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+	-webkit-transition: 0.1s linear all;
+	-moz-transition: 0.1s linear all;
+	-ms-transition: 0.1s linear all;
+	-o-transition: 0.1s linear all;
+	transition: 0.1s linear all;
+}		
+.btajout:hover {
+	  background-position: 0 -15px;
+	  text-decoration: none;
+	}
+
+.btsupp {
+	font-size:12px;
+	clear:both;
+	text-align: center;
+	margin-top:10px;
+	padding: 9px 34px 11px;
+	text-decoration: none;
+	font-weight: bold;
+	line-height: 1;
+	
+	color: #ffffff;
+	background-color: #ad102f;
+	background-repeat: repeat-x;
+	
+	background-image: -khtml-gradient(linear, left top, left bottom, from(#dc143c), to(#ad102f));
+	background-image: -moz-linear-gradient(top, #dc143c, #ad102f);
+	background-image: -ms-linear-gradient(top, #dc143c, #ad102f);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dc143c), color-stop(100%, #ad102f));
+	background-image: -webkit-linear-gradient(top, #dc143c, #ad102f);
+	background-image: -o-linear-gradient(top, #dc143c, #ad102f);
+	background-image: linear-gradient(top, #dc143c, #ad102f);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dc143c', endColorstr='#ad102f', GradientType=0);
+	
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	
+	border: 1px solid #ad102f;
+	border-color: #ad102f #ad102f #904b4b;
+	
+	border-radius: 4px;
+	
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+	
+	-webkit-transition: 0.1s linear all;
+	-moz-transition: 0.1s linear all;
+	-ms-transition: 0.1s linear all;
+	-o-transition: 0.1s linear all;
+	transition: 0.1s linear all;
+}		
+.btsupp:hover {
+	  background-position: 0 -15px;
+	  text-decoration: none;
+	}
+	
+#banniere
+{
+width: 600px;
+height: 150px;
+background-position:  center;
+margin-bottom: 20px; 
+background-image: url('images/banniere.jpg');
+}
+ 
+#corps_forum
+{
+border: 1px solid black;
+width: 90%;
+margin-top: 50px;
+margin-left: 5%;
+margin-bottom: 10Opx;
+padding: 5px;
+background-color: rgb(237,224,213);
+}
+ 
+#footer
+{
+border: 1px solid black;
+width: 90%;
+margin-top: 50px;
+margin-left: 5%;
+margin-bottom: 10Opx;
+padding: 5px;
+background-color: rgb(237,224,213);
+}
+.ico {width:2%}
+.titre { width:61%; }
+.nombremessages { width:2%; }
+.nombrevu { width:4%; }
+.nombresujets { width:2%; }
+.auteur { width:7%; }
+.derniermessage { width:18%; }
+.categorie { width:92%; background-color : rgb(244,238,250); }
+ 
+td { border: 1px solid black; background-color: rgb(253,244,223); vertical-align:top; }
+table { background-color: rgb(237,224,213); border: 1px solid black; }
+th { background-color: rgb(243,250,223); border: 1px solid black; }
+
+.vt_auteur
+{
+width:20%;
+background-color : rgb(244,238,250);
+}
+.vt_mess
+{
+width:75%;
+background-color : rgb(244,238,250);
+}
+#quote
+{
+width: 100%;
+background-color : rgb(220,220,220);
+margin-top: 2px;
+margin-bottom: 2px;
+font-family: "Comic sans MS", Arial, Verdana, serif;
+}
